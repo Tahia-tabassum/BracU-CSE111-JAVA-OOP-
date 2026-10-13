@@ -1,0 +1,65 @@
+//Task1{
+public class CSEStudent extends Student{
+  
+  
+  
+  public String msg="I want to transfer to CSE";
+  
+  
+  public String shout(){
+    return msg;
+  }
+}
+
+public class CSE111Student extends Student{
+  
+  
+  
+  public String msg="I love Java Programming";
+  
+  
+  public String shout(){
+    return msg;
+  }
+}
+
+//Task2
+public class PlatinumCard extends CreditCard {
+
+    
+    public PlatinumCard(String ch, String a) {
+        super(ch, a, 100);
+    }
+
+    
+    public void spendCash(int amnt) {
+        System.out.println("Previous Reward Points: " + rewardPoints);
+        
+        int earned = (amnt / 100) * 2;
+        rewardPoints += earned;
+
+        System.out.println("Reward points after spending " + amnt+ " taka: " + rewardPoints);
+    }
+}
+
+public class SignatureCard extends CreditCard {
+
+    public SignatureCard(String ch, String a) {
+        super(ch, a, 200);
+    }
+
+    public void spendCash(int amnt) {
+        System.out.println("Previous Reward Points: " + rewardPoints);
+
+        int earned = (amnt / 100) * 4;
+        rewardPoints += earned;
+
+        System.out.println("Reward points after spending " + amnt+ " taka: " + rewardPoints);
+    }
+    
+    public void cardDetails() {
+        super.cardDetails(); 
+        System.out.println("Possible Number of Companions for Lounge: 5");
+    }
+}
+

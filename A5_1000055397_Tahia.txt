@@ -1,0 +1,307 @@
+//Task1
+public class Company{
+  public Employee [] info= new Employee[3];
+  public int count;
+  
+  
+  public void addEmployee( Employee n){
+    if(count<3){
+     info[count]=n;
+     count++;
+    System.out.println(n.getNm()+" has joined the company"); }
+    else{
+      System.out.println("No more vacancy"); }
+  }
+  
+  public void removeEmployee( Employee n){
+    int index=-1;
+    for(int i=0; i<count; i++){
+      if(info[i]==n){
+        index=i;
+        break;}
+      }
+    if(index!=-1){
+      for(int i=index; i<count-1; i++){
+        info[i]=info[i+1];}
+      //info[count-1]=null;
+      count--;
+      System.out.println(n.getNm()+" has left the company");}
+  }
+  
+  
+  public void details(){
+  System.out.println("Company Name: ABC Company\nTotal Employee: "+count);
+  System.out.println("Fulltime Employees: ");
+  for(int i=0; i<count; i++){
+    Employee n= info[i];
+    if("Fulltime".equals(n.getType())){
+    System.out.println("Name:"+n.getNm()+", ID:"+n.getId());}
+  }
+  
+   System.out.println("Part-time Employees: ");
+  for(int i=0; i<count; i++){
+    Employee n= this.info[i];
+    if("Part-time".equals(n.getType())){
+    System.out.println("Name:"+n.getNm()+", ID:"+n.getId());}
+  }
+}
+}
+      
+      
+      public class Employee{
+  private String name, type;
+  private int count, id;
+  
+  
+  
+  public Employee(){
+    System.out.println("A default employee has been created"); }
+  
+  public Employee(String n, int i, String t){
+    this.name=n;
+    this.id=i;
+    this.type=t;  }
+  
+  public String getNm(){
+    return name;}
+  public int getId(){
+    return id;}
+  public String getType(){
+    return type;}
+    
+}
+
+
+//Task2
+public class Student{
+  public String name;
+  public double cgpa;
+  private int id;
+  
+  public Student(String n, int i, double c){
+    this.name=n;
+    this.id=i;
+    this.cgpa=c;
+  }
+  
+  public int getId(){
+    return id;}
+  
+  public void setId(int i){
+    this.id=i; }
+  
+}
+
+public class Department {
+  public String dept;
+  public Student[] info = new Student[5]; 
+  public int count;
+
+  public Department(String d) {
+    this.dept = d;
+  }
+
+  
+  public void addStudent(Student a) {
+    for(int i=0; i<count; i++){
+    if(info[i].getId()==a.getId()){
+      System.out.println("Student with the same ID already exists, Please try with another ID");
+      return;}
+    }
+      if (count<5) {
+      info[count]=a;
+        count++;
+        System.out.println("Welcome to " + dept+ " department, " + a.name);
+      }
+    }
+  public void addStudent(Student a, Student b, Student c) { 
+    this.addStudent(a);
+    this.addStudent(b);
+    this.addStudent(c); }
+
+  public void findStudent(int id) {
+    for (int i = 0; i < count; i++) {
+      if (info[i].getId() == id) {
+        System.out.println("Student info:");
+        System.out.println("Student Name: " + info[i].name);
+        System.out.println("ID: " + info[i].getId());
+        System.out.println("CGPA:  " + info[i].cgpa);
+      return;
+      }
+    }
+        System.out.println("Student with this ID doesn't exist, Please give a valid ID");
+    }
+
+  public void details() {
+    System.out.println("Department Name: " + dept);
+    System.out.println("Number of student:" + count);
+    System.out.println("Details of the students: ");
+    for (int i = 0; i < count; i++) {
+      System.out.println("Student name: " + info[i].name + ", ID: " + info[i].getId() + ", cgpa: " + info[i].cgpa);
+    }
+  }
+}
+
+//Task3
+public class Spaceship{
+  public String name;
+  public int capacity, count, total, difference;
+  public Cargo[] names= new Cargo[100];
+  
+  public Spaceship(String n, int c){
+    this.name=n;
+    this.capacity=c;
+  }
+  
+  public void loadCargo( Cargo c){
+    if((total+c.getW())<capacity){
+      names[count]=c;
+      count++;
+      total+=c.getW();
+      
+    }
+    else{
+      difference=(c.getW()-(capacity-total));
+      System.out.println("Warning: Unable to load "+c.getItem()+" inside "+name+". Exceeds capacity by "+difference+".");
+    }
+  }
+  
+  public void displayDetails(){
+  System.out.println("Spaceship Name: "+name+"\nCapacity: "+capacity+"\nCurrent cargo weight: "+total+"\nCargo: ");
+  for(int i=0; i<count;i++){
+   System.out.print(names[i].getItem()+" ");
+  }
+  }
+}
+
+public class Cargo{
+  private String item;
+  private int weight;
+  
+  
+  public Cargo(String i, int w){
+    this.item=i;
+    this.weight=w;
+  }
+  
+  public String getItem(){
+    return item; }
+  
+  public int getW(){
+    return weight;}
+}
+
+
+     
+  //Task 4
+public class UberEatsUser{
+  private String name, location;
+  private boolean ordered;
+  
+  public UberEatsUser(String n, String l){
+    this.name=n;
+    this.location=l;
+   }
+  
+  public UberEatsUser(String n){
+    this(n, null);
+   }
+  
+  public void updateLocation(String l){
+    if(getloc()==null){
+    this.location=l;
+      System.out.println("Update Successful!");}
+    else{
+      System.out.println("We already have your location. \nPlease place an order!");
+    }
+  }
+  
+  public String getloc(){
+    return location;}
+  public String getName(){
+    return name;}
+  public void setOrder(boolean t){
+    this.ordered=t;}
+   public boolean getOrder(){
+    return ordered;}
+}
+
+    public class Restaurant{
+  public UberEatsUser [] orders= new UberEatsUser[3];
+  public String rName, rLoc;
+  public int count;
+  
+  
+  public Restaurant(String r, String l){
+  this.rName=r;
+    this.rLoc=l;
+  }
+  
+  
+  public void takeOrder(UberEatsUser n){
+    if(n.getloc()==null){
+     System.out.println("Location : Unknown. Please update your location information!"); 
+   return;
+    }
+    if(n.getOrder()){
+      System.out.println("You already have a pending order!");
+    return;}
+    if(count<3){
+      orders[count]=n;
+      count++;
+      System.out.println("Your order has been added!");
+      n.setOrder(true);
+      }
+    else{
+      System.out.println("We are really busy right now. \nPlease order after some time. \nThank you!");
+      }
+    }
+
+public void completeOrders(){
+  if(count>0){
+  System.out.println("Showing "+rName+"'s orders: ");
+    for(int i=0; i<count;i++){
+      System.out.println("Order by "+orders[i].getName()+" at "+orders[i].getloc()+" completed");
+    
+      orders[i].setOrder(false);
+      orders[i]=null;
+    }
+    count=0;}
+  else{
+    System.out.println("No pending orders at the moment.");}
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
